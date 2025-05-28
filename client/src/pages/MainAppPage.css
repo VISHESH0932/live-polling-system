@@ -1,0 +1,36 @@
+/* client/src/pages/MainAppPage.css */
+.main-app-container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-content {
+  flex-grow: 1;
+  padding: 20px; /* Adjust as needed */
+  /* You might want to center content based on Figma using max-width and margin: auto */
+}
+
+.chat-toggle-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 24px; /* Adjust for icon size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--box-shadow-medium);
+  cursor: pointer;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.chat-toggle-button:hover {
+  background-color: var(--color-primary-light);
+}

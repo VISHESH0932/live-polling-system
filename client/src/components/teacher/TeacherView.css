@@ -1,0 +1,26 @@
+/* client/src/components/Teacher/TeacherView.css */
+.teacher-view {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto; /* Center content cards if they are cards */
+}
+.live-poll-view, .poll-ended-view {
+    /* Styles for these specific views if they are card-like */
+}
+.poll-header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: var(--color-background-light-gray);
+    border-radius: var(--border-radius-medium);
+}
+.poll-header-info h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+.end-poll-btn, .ask-new-btn {
+    display: block;
+    margin: 20px auto 0 auto; /* Center button */
+}

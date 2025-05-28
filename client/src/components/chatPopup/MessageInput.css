@@ -1,0 +1,18 @@
+/* client/src/components/Shared/ChatPopup/MessageInput.css */
+.message-input-form {
+  display: flex;
+  margin-top: auto; /* Push to bottom */
+  padding-top: 10px; /* Space above input */
+  border-top: 1px solid var(--color-border);
+}
+
+.message-input-form input[type="text"] {
+  flex-grow: 1;
+  margin-right: 8px;
+  margin-bottom: 0; /* Remove default margin from global styles */
+}
+
+.message-input-form button {
+  padding: 10px 15px; /* Smaller button for chat */
+  flex-shrink: 0;
+}

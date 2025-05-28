@@ -1,0 +1,7 @@
+/* client/src/components/Shared/Timer.css */
+.timer-display {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-error); /* Figma shows timer in red */
+  /* Add other styling for icon and text alignment from Figma */
+}

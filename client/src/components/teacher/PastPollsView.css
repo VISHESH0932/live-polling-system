@@ -1,0 +1,76 @@
+/* client/src/components/Teacher/PastPollsView.css */
+.past-polls-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.past-polls-container h3 {
+  font-size: 1.8rem;
+  color: var(--color-text-primary);
+  margin-bottom: 20px;
+  text-align: center; /* As seen in Figma for "Past Polls" title */
+}
+
+.past-poll-item {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-medium);
+  margin-bottom: 25px;
+  box-shadow: var(--box-shadow-light);
+  /* The PollResultsChart itself will have padding for its content */
+}
+
+.past-poll-item .poll-results-chart-container { /* Remove extra margin from chart if it's already in item */
+    margin-top: 0;
+    box-shadow: none; /* Remove shadow if chart has its own, and item provides outer shadow */
+    border-radius: 0; /* If item provides overall rounding */
+}
+
+
+.past-poll-meta {
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  border-top: 1px solid var(--color-background-light-gray);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Allow meta items to wrap on smaller screens */
+}
+.past-poll-meta p {
+    margin: 3px 0;
+}
+
+/* Adjustments for PollResultsChart when used in past polls (Figma: Frame 7 implies this compact style) */
+.past-poll-item .poll-question-title {
+    font-size: 1.1rem; /* More compact title for past poll items */
+    padding: 12px 15px;
+    border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0; /* Top corners rounded */
+}
+.past-poll-item .results-list {
+    padding: 12px 15px;
+    border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium); /* Bottom corners rounded */
+    border-top: none; /* Already handled by question title background */
+}
+.past-poll-item .option-number {
+    width: 24px;
+    height: 24px;
+    font-size: 0.8rem;
+}
+.past-poll-item .option-text {
+    font-size: 0.9rem;
+}
+.past-poll-item .result-bar-container {
+    height: 24px;
+}
+.past-poll-item .percentage-text {
+    font-size: 0.9rem;
+}
+.past-polls-container .error-message { /* Style for errors within past polls view */
+    text-align: center;
+    padding: 20px;
+    background-color: #ffebee;
+    color: var(--color-error);
+    border: 1px solid var(--color-error);
+    border-radius: var(--border-radius-medium);
+}

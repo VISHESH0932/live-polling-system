@@ -1,0 +1,88 @@
+/* client/src/components/Shared/PollResultsChart.css */
+.poll-results-chart-container {
+  margin-top: 20px;
+  background-color: var(--color-white); /* Or light gray based on context */
+  /* padding: 20px; */ /* No distinct box in student results view */
+  /* border-radius: var(--border-radius-medium); */
+  /* box-shadow: var(--box-shadow-light); */
+}
+.poll-question-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    background-color: var(--color-background-light-gray); /* Match Figma question header */
+    padding: 15px;
+    border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0;
+    margin: 0;
+}
+
+.results-list {
+  list-style: none;
+  padding: 15px; /* Padding for the options area */
+  margin: 0;
+  border: 1px solid var(--color-border);
+  border-top: none; /* If using header for question */
+  border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);
+}
+
+.result-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+.option-label-container {
+    display: flex;
+    align-items: center;
+    width: 200px; /* Adjust as needed, or use flex-grow */
+    flex-shrink: 0;
+}
+
+.option-number {
+  background-color: var(--color-primary-light);
+  color: var(--color-white);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin-right: 10px;
+  font-size: 0.9rem;
+}
+
+.option-text {
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.result-bar-container {
+  flex-grow: 1;
+  background-color: var(--color-background-light-gray);
+  border-radius: var(--border-radius-small);
+  height: 28px; /* Match Figma's bar height look */
+  margin: 0 15px;
+  overflow: hidden; /* Ensure bar stays within container */
+  display: flex; /* For vertical alignment of bar if needed */
+  align-items: center; /* Center the bar vertically if its height is less */
+}
+
+.result-bar {
+  background-color: var(--color-primary-light);
+  height: 100%; /* Fill the container's height */
+  border-radius: var(--border-radius-small);
+  transition: width 0.5s ease-in-out;
+  text-align: right;
+  padding-right: 5px;
+  color: white;
+  font-size: 0.8em;
+}
+
+.percentage-text {
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  width: 50px; /* Fixed width for alignment */
+  text-align: right;
+}

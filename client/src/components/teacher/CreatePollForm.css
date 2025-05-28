@@ -1,0 +1,110 @@
+/* client/src/components/Teacher/CreatePollForm.css */
+.create-poll-form-container {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 30px;
+  background-color: var(--color-white);
+  /* Figma shows this as a full page view without distinct card for form itself */
+}
+.intervue-poll-chip-form { /* Similar to landing page but maybe styled slightly differently */
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.create-poll-form-container h2 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+.create-poll-form-container .form-subtitle {
+  color: var(--color-text-secondary);
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--color-text-primary);
+}
+.form-group.question-group textarea {
+    background-color: var(--color-background-light-gray);
+    border-color: var(--color-background-light-gray);
+    min-height: 80px; /* Adjust */
+}
+.char-count {
+    display: block;
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+}
+.option-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.option-number-form {
+  background-color: var(--color-primary-light); /* Match Figma */
+  color: var(--color-white);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.option-group input {
+    flex-grow: 1;
+    margin-bottom: 0; /* Override global */
+    background-color: var(--color-background-light-gray);
+    border-color: var(--color-background-light-gray);
+}
+.remove-option-btn {
+    background: transparent;
+    border: none;
+    color: var(--color-error);
+    font-size: 1.5rem;
+    padding: 0 5px;
+}
+.add-option-btn {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    padding: 8px 15px;
+    font-weight: 500;
+    margin-top: -5px; /* Pull it closer to options */
+    margin-bottom: 20px;
+}
+.add-option-btn:hover {
+    background-color: var(--color-primary-light);
+    color: var(--color-white);
+}
+
+.time-limit-group select {
+    padding: 10px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-small);
+    font-size: 1rem;
+    background-color: var(--color-white); /* Figma dropdown appears white with border */
+    min-width: 150px; /* Give it some width */
+}
+
+.ask-question-btn {
+    width: auto; /* Figma button is not full width */
+    padding: 12px 30px;
+    /* Position at bottom if layout requires it, like Figma's sticky footer button */
+    /* display: block; margin-left: auto; margin-right: auto; */ /* If centered */
+}
+.create-poll-form-container .error-message {
+    text-align: left;
+    margin-bottom: 15px;
+}

@@ -1,0 +1,50 @@
+/* client/src/components/Shared/ChatPopup/ChatPopup.css */
+.chat-popup-container {
+  position: fixed;
+  bottom: 100px; /* Above the toggle button */
+  right: 30px;
+  width: 350px; /* Adjust from Figma */
+  max-height: 500px; /* Adjust from Figma */
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-medium);
+  box-shadow: var(--box-shadow-medium);
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+  overflow: hidden; /* Handles content overflow */
+}
+
+.chat-popup-header {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.chat-popup-header button {
+  flex: 1;
+  padding: 12px 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  border-radius: 0; /* Remove button default radius */
+}
+
+.chat-popup-header button.active {
+  color: var(--color-primary);
+  border-bottom: 3px solid var(--color-primary);
+}
+
+.chat-popup-content {
+  flex-grow: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Make content scrollable if it overflows */
+}
+.chat-error {
+    font-size: 0.85rem;
+    padding: 5px 0;
+    text-align: center;
+}

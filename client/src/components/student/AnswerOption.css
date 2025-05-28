@@ -1,0 +1,52 @@
+/* client/src/components/Student/AnswerOptions.css */
+.answer-options-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+.answer-options-list li {
+  margin-bottom: 10px;
+}
+.option-button {
+  width: 100%;
+  padding: 15px;
+  text-align: left;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+.option-button:hover:not(:disabled) {
+  border-color: var(--color-primary-light);
+  background-color: #f8f5ff; /* Very light purple */
+}
+.option-button.selected {
+  background-color: var(--color-primary-light); /* Figma shows selected as solid fill */
+  color: var(--color-white);
+  border-color: var(--color-primary-light);
+}
+.option-button.selected .option-number-student {
+    background-color: var(--color-white);
+    color: var(--color-primary-light);
+}
+.option-button:disabled {
+  background-color: var(--color-background-light-gray);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+.option-number-student {
+  background-color: var(--color-primary-light);
+  color: var(--color-white);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin-right: 15px;
+  font-size: 0.9rem;
+}

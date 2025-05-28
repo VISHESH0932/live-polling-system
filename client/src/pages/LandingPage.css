@@ -1,0 +1,111 @@
+.page-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  text-align: center;
+}
+
+.landing-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: var(--color-text-primary);
+}
+
+.landing-container .subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin-bottom: 30px;
+}
+
+.intervue-poll-chip {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.role-selection {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.role-box {
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-medium);
+  padding: 20px;
+  width: 280px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: var(--color-white);
+}
+
+.role-box:hover {
+  border-color: var(--color-primary-light);
+  box-shadow: var(--box-shadow-light);
+}
+
+.role-box.selected {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary), var(--box-shadow-medium); /* Figma has a prominent border */
+}
+
+.role-box h2 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: var(--color-text-primary);
+}
+
+.role-box p {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+}
+
+.name-input-form {
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--color-white);
+  /* padding: 30px; */ /* No distinct box in figma name input */
+  /* border-radius: var(--border-radius-medium); */
+  /* box-shadow: var(--box-shadow-medium); */
+}
+.name-input-form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+.name-input-form input {
+    background-color: var(--color-background-light-gray);
+    border: 1px solid var(--color-background-light-gray); /* Figma has light gray inputs */
+}
+.name-input-form button {
+    width: 100%;
+    margin-top: 15px;
+}
+.name-input-form .back-button {
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    margin-top: 10px;
+    font-weight: 500;
+    border: 1px solid var(--color-border);
+}
+.name-input-form .back-button:hover {
+    background-color: var(--color-background-light-gray);
+}
+
+.error-message {
+  color: var(--color-error);
+  margin-top: 10px;
+  font-size: 0.9rem;
+}

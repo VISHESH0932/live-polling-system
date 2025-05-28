@@ -1,0 +1,75 @@
+/* client/src/components/Shared/ChatPopup/MessageList.css */
+.message-list {
+  flex-grow: 1;
+  overflow-y: auto; /* Scroll for messages */
+  padding-bottom: 10px; /* Space for scrollbar or end ref */
+  min-height: 200px; /* Ensure it has some height */
+}
+
+.no-messages {
+  text-align: center;
+  color: var(--color-text-secondary);
+  padding: 20px;
+}
+
+.message-item {
+  margin-bottom: 12px;
+  max-width: 85%; /* Messages don't take full width */
+}
+
+.message-item.my-message {
+  margin-left: auto; /* Align to right */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.message-item.other-message {
+  margin-right: auto; /* Align to left */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
+.message-sender {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+.my-message .message-sender { text-align: right;}
+.other-message .message-sender { text-align: left;}
+
+
+.message-bubble {
+  padding: 8px 12px;
+  border-radius: var(--border-radius-medium);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.my-message .message-bubble {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-bottom-right-radius: var(--border-radius-small); /* Chat bubble tail effect */
+}
+
+.other-message .message-bubble {
+  background-color: var(--color-background-light-gray);
+  color: var(--color-text-primary);
+  border-bottom-left-radius: var(--border-radius-small); /* Chat bubble tail effect */
+}
+.other-message.teacher-message .message-bubble { /* Teacher's "other" message */
+    background-color: var(--color-primary-light); /* Slightly different for teacher if needed */
+    color: var(--color-white);
+}
+
+
+.message-timestamp {
+  font-size: 0.7rem;
+  color: var(--color-text-secondary);
+  margin-top: 3px;
+}
+.my-message .message-timestamp { text-align: right; }
+.other-message .message-timestamp { text-align: left; }
