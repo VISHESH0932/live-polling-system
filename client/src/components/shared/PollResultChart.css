@@ -1,16 +1,13 @@
-/* client/src/components/Shared/PollResultsChart.css */
 .poll-results-chart-container {
   margin-top: 20px;
-  background-color: var(--color-white); /* Or light gray based on context */
-  /* padding: 20px; */ /* No distinct box in student results view */
-  /* border-radius: var(--border-radius-medium); */
-  /* box-shadow: var(--box-shadow-light); */
+  background-color: var(--color-white); 
+ 
 }
 .poll-question-title {
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--color-text-primary);
-    background-color: var(--color-background-light-gray); /* Match Figma question header */
+    background-color: var(--color-background-light-gray); 
     padding: 15px;
     border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0;
     margin: 0;
@@ -18,10 +15,10 @@
 
 .results-list {
   list-style: none;
-  padding: 15px; /* Padding for the options area */
+  padding: 15px; 
   margin: 0;
   border: 1px solid var(--color-border);
-  border-top: none; /* If using header for question */
+  border-top: none; 
   border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);
 }
 
@@ -35,7 +32,7 @@
 .option-label-container {
     display: flex;
     align-items: center;
-    width: 200px; /* Adjust as needed, or use flex-grow */
+    width: 200px;
     flex-shrink: 0;
 }
 
@@ -62,16 +59,16 @@
   flex-grow: 1;
   background-color: var(--color-background-light-gray);
   border-radius: var(--border-radius-small);
-  height: 28px; /* Match Figma's bar height look */
+  height: 28px;
   margin: 0 15px;
-  overflow: hidden; /* Ensure bar stays within container */
-  display: flex; /* For vertical alignment of bar if needed */
-  align-items: center; /* Center the bar vertically if its height is less */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .result-bar {
   background-color: var(--color-primary-light);
-  height: 100%; /* Fill the container's height */
+  height: 100%; 
   border-radius: var(--border-radius-small);
   transition: width 0.5s ease-in-out;
   text-align: right;
@@ -83,6 +80,6 @@
 .percentage-text {
   color: var(--color-text-secondary);
   font-weight: 600;
-  width: 50px; /* Fixed width for alignment */
+  width: 50px;
   text-align: right;
 }

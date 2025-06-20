@@ -56,7 +56,7 @@
 
 .role-box.selected {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px var(--color-primary), var(--box-shadow-medium); /* Figma has a prominent border */
+  box-shadow: 0 0 0 2px var(--color-primary), var(--box-shadow-medium); 
 }
 
 .role-box h2 {
@@ -75,9 +75,7 @@
   width: 100%;
   max-width: 400px;
   background-color: var(--color-white);
-  /* padding: 30px; */ /* No distinct box in figma name input */
-  /* border-radius: var(--border-radius-medium); */
-  /* box-shadow: var(--box-shadow-medium); */
+
 }
 .name-input-form label {
     display: block;
@@ -87,7 +85,7 @@
 }
 .name-input-form input {
     background-color: var(--color-background-light-gray);
-    border: 1px solid var(--color-background-light-gray); /* Figma has light gray inputs */
+    border: 1px solid var(--color-background-light-gray); 
 }
 .name-input-form button {
     width: 100%;

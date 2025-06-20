@@ -1,4 +1,4 @@
-/* client/src/pages/MainAppPage.css */
+
 .main-app-container {
   position: relative;
   min-height: 100vh;
@@ -6,13 +6,13 @@
   flex-direction: column;
 }
 
-/* New Header Styles */
+
 .main-app-page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px; /* Match Figma general padding */
-  background-color: var(--color-background-light-gray); /* Or white if preferred */
+  padding: 15px 30px; 
+  background-color: var(--color-background-light-gray);
   border-bottom: 1px solid var(--color-border);
   width: 100%;
   box-sizing: border-box;

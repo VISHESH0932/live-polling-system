@@ -1,4 +1,4 @@
-// client/src/components/Shared/ChatPopup/MessageInput.js
+
 import React, { useState } from 'react';
 import './MessageInput.css';
 

@@ -1,46 +1,39 @@
-/* client/src/components/Student/StudentView.css */
 .student-view {
   padding: 20px;
-  max-width: 600px; /* Consistent width for the poll content area */
-  margin: 40px auto; /* Centering the main poll content */
+  max-width: 600px; 
+  margin: 40px auto; 
 }
 
-.poll-active-view, .poll-results-view {
-  /* If these views should have a card-like appearance different from the page background */
-  /* background-color: var(--color-white); */
-  /* border-radius: var(--border-radius-medium); */
-  /* box-shadow: var(--box-shadow-light); */
-  /* padding: 20px; */ /* Figma shows it more integrated, not a distinct card */
-}
+
 
 .poll-question-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  /* No distinct background for this header in student view, part of main area */
+ 
 }
-/* Styling for QuestionDisplay's h3 and p if needed */
+
 .question-display-header h3 {
-    font-size: 1.3rem; /* Figma's "Question 1" looks like this */
+    font-size: 1.3rem; 
     margin: 0;
     color: var(--color-text-primary);
 }
-.question-display-header .question-text { /* This is the actual question text */
-    font-size: 1.5rem; /* Prominent question text */
+.question-display-header .question-text { 
+    font-size: 1.5rem;
     font-weight: 600;
     color: var(--color-text-primary);
-    background-color: var(--color-background-light-gray); /* Question itself has a background */
+    background-color: var(--color-background-light-gray);
     padding: 20px;
     border-radius: var(--border-radius-medium);
-    margin-top: 10px; /* Space below "Question X" title */
+    margin-top: 10px; 
     text-align: left;
 }
 
 
 .submit-answer-btn {
   display: block;
-  width: 100%; /* Figma shows button full width of options */
+  width: 100%; 
   padding: 12px 20px;
   margin-top: 25px;
   font-size: 1.1rem;
@@ -53,14 +46,12 @@
   margin-top: 20px;
 }
 
-.waiting-view { /* Uses page-center from LandingPage.css for full centering */
-  /* Specific styles for waiting view if page-center isn't enough */
-}
+
 .loading-spinner-placeholder {
-  font-size: 3rem; /* Make spinner large */
+  font-size: 3rem; 
   color: var(--color-primary);
   margin: 30px 0;
-  animation: spin 1s linear infinite; /* Simple spin animation */
+  animation: spin 1s linear infinite; 
 }
 
 @keyframes spin {
@@ -75,7 +66,7 @@
 .student-view .error-message {
     text-align: center;
     padding: 20px;
-    background-color: #ffebee; /* Light red background for error */
+    background-color: #ffebee;
     color: var(--color-error);
     border: 1px solid var(--color-error);
     border-radius: var(--border-radius-medium);

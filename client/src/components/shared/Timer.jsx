@@ -1,6 +1,6 @@
-// client/src/components/Shared/Timer.js
+
 import React from 'react';
-import './Timer.css'; // Create this
+import './Timer.css';
 
 const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
@@ -9,11 +9,9 @@ const formatTime = (seconds) => {
 };
 
 const Timer = ({ initialSeconds }) => {
-    // The actual countdown logic is now primarily in PollContext's timeLeft
-    // This component just displays it.
+   
     return (
         <div className="timer-display">
-            {/* Replace with a proper clock icon */}
             🕒 {formatTime(initialSeconds)}
         </div>
     );

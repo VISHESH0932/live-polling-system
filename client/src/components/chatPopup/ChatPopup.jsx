@@ -1,18 +1,17 @@
-// client/src/components/Shared/ChatPopup/ChatPopup.js
 import React, { useState } from 'react';
-import { useChat } from '../../contexts/ChatContext'; // For messages, sendMessage, chatError
-import { usePoll } from '../../contexts/PollContext'; // For active users & kickStudent
-import { useUser } from '../../contexts/UserContext';   // To check if current user is teacher
+import { useChat } from '../../contexts/ChatContext'; 
+import { usePoll } from '../../contexts/PollContext'; 
+import { useUser } from '../../contexts/UserContext';   
 import MessageList from './MessageList';
 import MessageInput from './MessageInput';
-import StudentList from '../teacher/StudentList'; // We will use this!
+import StudentList from '../teacher/StudentList'; 
 import './ChatPopup.css';
 
 const ChatPopup = () => {
-    const { user } = useUser(); // Get the current logged-in user
+    const { user } = useUser();
     const { messages, sendMessage, chatError } = useChat();
-    const { activeUsers, kickStudent } = usePoll(); // Get activeUsers and kickStudent
-    const [activeTab, setActiveTab] = useState('chat'); // 'chat' or 'participants'
+    const { activeUsers, kickStudent } = usePoll(); 
+    const [activeTab, setActiveTab] = useState('chat'); 
 
     const studentParticipants = activeUsers.filter(u => u.role === 'student');
 
@@ -41,7 +40,7 @@ const ChatPopup = () => {
                     </>
                 )}
                 {activeTab === 'participants' && (
-                    // Pass students and onKick (only if current user is a teacher)
+                    
                     <StudentList
                         students={studentParticipants}
                         onKick={user?.role === 'teacher' ? kickStudent : undefined}

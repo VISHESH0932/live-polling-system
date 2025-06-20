@@ -1,10 +1,10 @@
-// client/src/components/Teacher/StudentList.js
+
 import React from 'react';
-import { useUser } from '../../contexts/UserContext'; // To know if current user is teacher
-import './StudentList.css'; // Create this
+import { useUser } from '../../contexts/UserContext'; 
+import './StudentList.css';
 
 const StudentList = ({ students, onKick }) => {
-    const { user } = useUser(); // Get current user role
+    const { user } = useUser(); 
 
     if (!students || students.length === 0) {
         return <p className="no-students">No students currently connected.</p>;
@@ -12,7 +12,7 @@ const StudentList = ({ students, onKick }) => {
 
     return (
         <div className="student-list-container">
-            {/* Figma shows "Name" and "Action" headers for kick out view */}
+           
             {user?.role === 'teacher' && onKick && (
                 <div className="student-list-header">
                     <span>Name</span>
@@ -23,7 +23,7 @@ const StudentList = ({ students, onKick }) => {
                 {students.map((student) => (
                     <li key={student.id} className="student-item">
                         <span className="student-name">{student.name}</span>
-                        {user?.role === 'teacher' && onKick && ( // Show kick button only for teacher and if onKick is provided
+                        {user?.role === 'teacher' && onKick && ( 
                             <button className="kick-button" onClick={() => onKick(student.id)}>
                                 Kick out
                             </button>

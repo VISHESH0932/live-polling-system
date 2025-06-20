@@ -1,9 +1,8 @@
-/* client/src/components/Shared/ChatPopup/MessageList.css */
 .message-list {
   flex-grow: 1;
-  overflow-y: auto; /* Scroll for messages */
-  padding-bottom: 10px; /* Space for scrollbar or end ref */
-  min-height: 200px; /* Ensure it has some height */
+  overflow-y: auto; 
+  padding-bottom: 10px; 
+  min-height: 200px;
 }
 
 .no-messages {
@@ -14,17 +13,17 @@
 
 .message-item {
   margin-bottom: 12px;
-  max-width: 85%; /* Messages don't take full width */
+  max-width: 85%;
 }
 
 .message-item.my-message {
-  margin-left: auto; /* Align to right */
+  margin-left: auto; 
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
 .message-item.other-message {
-  margin-right: auto; /* Align to left */
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -52,16 +51,16 @@
 .my-message .message-bubble {
   background-color: var(--color-primary);
   color: var(--color-white);
-  border-bottom-right-radius: var(--border-radius-small); /* Chat bubble tail effect */
+  border-bottom-right-radius: var(--border-radius-small);
 }
 
 .other-message .message-bubble {
   background-color: var(--color-background-light-gray);
   color: var(--color-text-primary);
-  border-bottom-left-radius: var(--border-radius-small); /* Chat bubble tail effect */
+  border-bottom-left-radius: var(--border-radius-small); 
 }
-.other-message.teacher-message .message-bubble { /* Teacher's "other" message */
-    background-color: var(--color-primary-light); /* Slightly different for teacher if needed */
+.other-message.teacher-message .message-bubble { 
+    background-color: var(--color-primary-light); 
     color: var(--color-white);
 }
 

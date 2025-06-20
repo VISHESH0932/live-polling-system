@@ -1,4 +1,4 @@
-/* client/src/components/Student/AnswerOptions.css */
+
 .answer-options-list {
   list-style: none;
   padding: 0;
@@ -21,10 +21,10 @@
 }
 .option-button:hover:not(:disabled) {
   border-color: var(--color-primary-light);
-  background-color: #f8f5ff; /* Very light purple */
+  background-color: #f8f5ff; 
 }
 .option-button.selected {
-  background-color: var(--color-primary-light); /* Figma shows selected as solid fill */
+  background-color: var(--color-primary-light); 
   color: var(--color-white);
   border-color: var(--color-primary-light);
 }

@@ -1,28 +1,27 @@
-// client/src/components/Teacher/PastPollsView.js
 import React, { useEffect } from 'react';
 import { usePoll } from '../../contexts/PollContext';
-import PollResultsChart from '../shared/PollResultChart'; // Re-use the chart
-import './PastPollsView.css'; // We created this CSS earlier
+import PollResultsChart from '../shared/PollResultChart'; 
+import './PastPollsView.css';
 
 const PastPollsView = () => {
     const { pastPolls, fetchPastPolls, pollError, setPollError } = usePoll();
 
     useEffect(() => {
-        // Clear any existing poll errors when viewing past polls
+        
         setPollError('');
-        fetchPastPolls(); // Fetch when component mounts or becomes visible
+        fetchPastPolls(); 
     }, [fetchPastPolls, setPollError]);
 
-    if (!pastPolls) { // Check if pastPolls is null (e.g., during initial fetch or if fetch failed without setting an empty array)
+    if (!pastPolls) { 
         return (
             <div className="past-polls-container">
                 <h3>Past Polls</h3>
-                <p>Loading past polls...</p> {/* Or a spinner component */}
+                <p>Loading past polls...</p>
             </div>
         );
     }
     
-    if (pollError) { // Display error if fetching past polls failed
+    if (pollError) { 
          return (
             <div className="past-polls-container">
                 <h3>Past Polls</h3>
@@ -45,7 +44,7 @@ const PastPollsView = () => {
             <h3>Past Polls</h3>
             {pastPolls.map(poll => (
                 <div key={poll._id || poll.id} className="past-poll-item">
-                    {/* Pass the question to the chart component if it supports it */}
+                    
                     <PollResultsChart question={poll.question} options={poll.options} />
                     <div className="past-poll-meta">
                         <p>
@@ -61,7 +60,7 @@ const PastPollsView = () => {
                             </p>
                         )}
                     </div>
-                    {/* You could add more details here, like timeLimit, number of voters if stored */}
+                   
                 </div>
             ))}
         </div>

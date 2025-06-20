@@ -1,6 +1,6 @@
-// client/src/pages/MainAppPage.jsx
+
 import React from 'react';
-import { useUser } from '../contexts/UserContext'; // Make sure logout is pulled from here
+import { useUser } from '../contexts/UserContext'; 
 import { useChat } from '../contexts/ChatContext';
 import TeacherView from '../components/teacher/TeacherView';
 import StudentView from '../components/student/StudentView';
@@ -8,16 +8,16 @@ import ChatPopup from '../components/chatPopup/ChatPopup';
 import './MainAppPage.css';
 
 const MainAppPage = () => {
-    const { user, logout } = useUser(); // Get user and logout function
+    const { user, logout } = useUser(); 
     const { isChatOpen, toggleChat } = useChat();
 
-    if (!user) { // Should ideally not happen if App.jsx logic is correct, but good safeguard
-        return null; // Or a redirect to landing
+    if (!user) { 
+        return null; 
     }
 
     return (
         <div className="main-app-container">
-            {/* Simple Header Section for User Info and Logout */}
+        
             <header className="main-app-page-header">
                 <div className="app-branding">✨ Intervue Poll</div>
                 <div className="user-info-logout">

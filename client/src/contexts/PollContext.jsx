@@ -1,4 +1,4 @@
-// client/src/contexts/PollContext.js
+
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { useSocket } from './SocketContext';
 import { useUser } from './UserContext';
@@ -10,8 +10,8 @@ export const PollProvider = ({ children }) => {
     const socket = useSocket();
     const { user } = useUser();
 
-    const [currentPoll, setCurrentPoll] = useState(null); // For student: { id, q, opts(text), timeLimit}, For Teacher: full poll object
-    const [pollResults, setPollResults] = useState(null); // { id, options (with votes) }
+    const [currentPoll, setCurrentPoll] = useState(null); 
+    const [pollResults, setPollResults] = useState(null); 
     const [hasVotedThisPoll, setHasVotedThisPoll] = useState(false);
     const [timeLeft, setTimeLeft] = useState(0);
     const [pollError, setPollError] = useState('');
@@ -19,7 +19,7 @@ export const PollProvider = ({ children }) => {
     const [activeUsers, setActiveUsers] = useState([]);
     const [isPollLoading, setIsPollLoading] = useState(false);
 
-    // Client-side timer logic
+   
     useEffect(() => {
         let timerId;
         if (user?.role === 'student' && currentPoll?.status === 'active' && timeLeft > 0 && !hasVotedThisPoll) {
@@ -27,8 +27,7 @@ export const PollProvider = ({ children }) => {
                 setTimeLeft(prevTime => {
                     if (prevTime <= 1) {
                         clearInterval(timerId);
-                        // Student times out, should see results if poll is still active or closed
-                        // The server's 'pollClosed' or 'pollResultsUpdate' will handle showing results
+                        
                         return 0;
                     }
                     return prevTime - 1;
@@ -39,7 +38,7 @@ export const PollProvider = ({ children }) => {
     }, [user, currentPoll, timeLeft, hasVotedThisPoll]);
 
 
-    // --- Teacher Actions ---
+    
     const createPoll = useCallback((question, options, timeLimit) => {
         if (socket && user?.role === 'teacher') {
             setIsPollLoading(true);
@@ -48,7 +47,7 @@ export const PollProvider = ({ children }) => {
             socket.emit('createPoll', { question, options, timeLimit });
         }
         else {
-        // This else block might be getting triggered
+        
         console.error('PollContext: createPoll blocked. Socket available:', !!socket, 'User role is teacher:', user?.role === 'teacher');
         setPollError('You must be a teacher to create a poll. Please re-login if issue persists.');
         setIsPollLoading(false);
@@ -74,12 +73,12 @@ export const PollProvider = ({ children }) => {
     const kickStudent = useCallback((studentId) => {
         if (socket && user?.role === 'teacher') {
             console.log(`PollContext: Emitting kickStudent for ID: ${studentId}`);
-            socket.emit('kickStudent', studentId); // Backend needs this event
+            socket.emit('kickStudent', studentId);
         }
     }, [socket, user]);
 
 
-    // --- Student Actions ---
+    
     const submitAnswer = useCallback((pollId, optionIndex) => {
         if (socket && user?.role === 'student' && currentPoll?.id === pollId && !hasVotedThisPoll && timeLeft > 0) {
             setIsPollLoading(true);
@@ -90,37 +89,37 @@ export const PollProvider = ({ children }) => {
     }, [socket, user, currentPoll, hasVotedThisPoll, timeLeft]);
 
 
-    // --- Socket Event Listeners for Polls ---
+    
     useEffect(() => {
         if (!socket) return;
 
-        const handleNewPoll = (pollData) => { // For students, or general broadcast
+        const handleNewPoll = (pollData) => { 
             console.log('PollContext: Received newPoll', pollData);
-            setCurrentPoll({ // Store simplified version for student UI initially
+            setCurrentPoll({ 
                 id: pollData.id,
                 question: pollData.question,
-                options: pollData.options, // [{text}, {text}]
+                options: pollData.options,
                 timeLimit: pollData.timeLimit,
-                status: 'active' // Assume active
+                status: 'active' 
             });
-            setPollResults(null); // Clear previous results
+            setPollResults(null); 
             setHasVotedThisPoll(false);
             setTimeLeft(pollData.timeLimit);
             setPollError('');
             setIsPollLoading(false);
         };
 
-        const handlePollCreated = (pollData) => { // For creating teacher
+        const handlePollCreated = (pollData) => { 
             console.log('PollContext: Received pollCreated (for teacher)', pollData);
-            setCurrentPoll(pollData); // Teacher gets the full poll object
-            setPollResults({ id: pollData.id, options: pollData.options }); // Show initial 0 votes
-            setHasVotedThisPoll(false); // Reset for teacher if they were a student before
+            setCurrentPoll(pollData); 
+            setPollResults({ id: pollData.id, options: pollData.options }); 
+            setHasVotedThisPoll(false); 
             setTimeLeft(pollData.timeLimit);
             setPollError('');
             setIsPollLoading(false);
         };
 
-        const handlePollStatus = (pollData) => { // For teacher joining mid-poll
+        const handlePollStatus = (pollData) => { 
             console.log('PollContext: Received pollStatus (for rejoining teacher)', pollData);
             setCurrentPoll(pollData);
             setPollResults({ id: pollData.id, options: pollData.options });
@@ -132,22 +131,22 @@ export const PollProvider = ({ children }) => {
         const handlePollResultsUpdate = (resultsData) => {
             console.log('PollContext: Received pollResultsUpdate', resultsData);
             setPollResults(resultsData);
-            // If student submitted, mark as voted
+            
             if (user?.role === 'student' && currentPoll?.id === resultsData.id && !hasVotedThisPoll) {
                  // Check if *this* student's vote is reflected (more complex) or just assume they voted
                 // For simplicity, if they emitted submitAnswer, they should set hasVotedThisPoll themselves.
                 // This event just updates the results for everyone.
             }
-            setIsPollLoading(false); // If student was loading during submit
+            setIsPollLoading(false);
         };
 
         const handlePollClosed = (closedData) => {
             console.log('PollContext: Received pollClosed', closedData);
             setCurrentPoll(prevPoll => prevPoll && prevPoll.id === closedData.id ? { ...prevPoll, status: 'closed'} : null);
-            setPollResults({ id: closedData.id, options: closedData.options, question: closedData.question }); // Store final results
+            setPollResults({ id: closedData.id, options: closedData.options, question: closedData.question });
             setTimeLeft(0);
-            setHasVotedThisPoll(true); // Poll is over, can't vote anymore
-            if (user?.role === 'teacher') fetchPastPolls(); // Refresh past polls for teacher
+            setHasVotedThisPoll(true);
+            if (user?.role === 'teacher') fetchPastPolls(); 
             setIsPollLoading(false);
             if(closedData.errorSavingToDb) {
                 setPollError("Poll closed, but failed to save to database.");
@@ -177,7 +176,7 @@ export const PollProvider = ({ children }) => {
         socket.on('pollClosed', handlePollClosed);
         socket.on('pastPollsData', handlePastPollsData);
         socket.on('activeUsers', handleActiveUsers);
-        socket.on('error', handlePollError); // Catch generic errors, can be refined
+        socket.on('error', handlePollError);
 
         return () => {
             socket.off('newPoll', handleNewPoll);
@@ -191,7 +190,7 @@ export const PollProvider = ({ children }) => {
         };
     }, [socket, user, fetchPastPolls]);
 
-    // Effect to update hasVotedThisPoll when student submits
+    
     useEffect(() => {
         if (isPollLoading && user?.role === 'student' && currentPoll) {
             // This is a bit of a hack, better to confirm vote via server
@@ -202,7 +201,7 @@ export const PollProvider = ({ children }) => {
 
 
     const value = {
-        currentPoll, setCurrentPoll, // Allow direct setting for some cases if needed
+        currentPoll, setCurrentPoll, 
         pollResults, setPollResults,
         hasVotedThisPoll, setHasVotedThisPoll,
         timeLeft,

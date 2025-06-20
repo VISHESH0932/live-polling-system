@@ -1,12 +1,11 @@
-/* client/src/components/Teacher/CreatePollForm.css */
 .create-poll-form-container {
   max-width: 700px;
   margin: 20px auto;
   padding: 30px;
   background-color: var(--color-white);
-  /* Figma shows this as a full page view without distinct card for form itself */
+  
 }
-.intervue-poll-chip-form { /* Similar to landing page but maybe styled slightly differently */
+.intervue-poll-chip-form { 
   background-color: var(--color-primary);
   color: var(--color-white);
   padding: 6px 12px;
@@ -37,7 +36,7 @@
 .form-group.question-group textarea {
     background-color: var(--color-background-light-gray);
     border-color: var(--color-background-light-gray);
-    min-height: 80px; /* Adjust */
+    min-height: 80px; 
 }
 .char-count {
     display: block;
@@ -51,7 +50,7 @@
     gap: 10px;
 }
 .option-number-form {
-  background-color: var(--color-primary-light); /* Match Figma */
+  background-color: var(--color-primary-light);
   color: var(--color-white);
   border-radius: 50%;
   width: 28px;
@@ -64,7 +63,7 @@
 }
 .option-group input {
     flex-grow: 1;
-    margin-bottom: 0; /* Override global */
+    margin-bottom: 0; 
     background-color: var(--color-background-light-gray);
     border-color: var(--color-background-light-gray);
 }
@@ -81,7 +80,7 @@
     border: 1px solid var(--color-primary);
     padding: 8px 15px;
     font-weight: 500;
-    margin-top: -5px; /* Pull it closer to options */
+    margin-top: -5px; 
     margin-bottom: 20px;
 }
 .add-option-btn:hover {
@@ -94,15 +93,13 @@
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius-small);
     font-size: 1rem;
-    background-color: var(--color-white); /* Figma dropdown appears white with border */
-    min-width: 150px; /* Give it some width */
+    background-color: var(--color-white);
+    min-width: 150px; 
 }
 
 .ask-question-btn {
-    width: auto; /* Figma button is not full width */
+    width: auto;
     padding: 12px 30px;
-    /* Position at bottom if layout requires it, like Figma's sticky footer button */
-    /* display: block; margin-left: auto; margin-right: auto; */ /* If centered */
 }
 .create-poll-form-container .error-message {
     text-align: left;

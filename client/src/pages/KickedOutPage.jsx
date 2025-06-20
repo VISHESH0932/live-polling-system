@@ -1,6 +1,6 @@
-// client/src/pages/KickedOutPage.js
+
 import React from 'react';
-import './LandingPage.css'; // Reuse some styles
+import './LandingPage.css'; 
 
 const KickedOutPage = ({ message }) => {
     return (
@@ -10,8 +10,7 @@ const KickedOutPage = ({ message }) => {
             <p className="subtitle">
                 {message || "Looks like the teacher has removed you from the poll system. Please try again sometime."}
             </p>
-            {/* Optionally, a button to go back to login or close the tab */}
-            {/* <button onClick={() => window.location.reload()}>Try to Rejoin</button> */}
+          
         </div>
     );
 };

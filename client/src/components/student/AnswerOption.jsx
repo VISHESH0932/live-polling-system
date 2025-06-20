@@ -1,4 +1,3 @@
-// client/src/components/Student/AnswerOptions.js
 import React from 'react';
 import './AnswerOption.css';
 

@@ -1,17 +1,17 @@
-/* client/src/components/Shared/ChatPopup/ChatPopup.css */
+
 .chat-popup-container {
   position: fixed;
-  bottom: 100px; /* Above the toggle button */
+  bottom: 100px;
   right: 30px;
-  width: 350px; /* Adjust from Figma */
-  max-height: 500px; /* Adjust from Figma */
+  width: 350px; 
+  max-height: 500px; 
   background-color: var(--color-white);
   border-radius: var(--border-radius-medium);
   box-shadow: var(--box-shadow-medium);
   display: flex;
   flex-direction: column;
   z-index: 999;
-  overflow: hidden; /* Handles content overflow */
+  overflow: hidden;
 }
 
 .chat-popup-header {

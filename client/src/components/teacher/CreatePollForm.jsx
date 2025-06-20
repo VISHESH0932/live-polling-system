@@ -1,4 +1,3 @@
-// client/src/components/Teacher/CreatePollForm.js
 import React, { useState } from 'react';
 import { usePoll } from '../../contexts/PollContext';
 import './CreatePollForm.css';
@@ -6,7 +5,7 @@ import './CreatePollForm.css';
 const CreatePollForm = () => {
     const { createPoll, isPollLoading, pollError, setPollError } = usePoll();
     const [question, setQuestion] = useState('');
-    const [options, setOptions] = useState(['', '']); // Start with 2 options
+    const [options, setOptions] = useState(['', '']); 
     const [timeLimit, setTimeLimit] = useState(60);
 
     const handleOptionChange = (index, value) => {
@@ -16,13 +15,13 @@ const CreatePollForm = () => {
     };
 
     const addOption = () => {
-        if (options.length < 10) { // Max 10 options
+        if (options.length < 10) { 
             setOptions([...options, '']);
         }
     };
 
     const removeOption = (index) => {
-        if (options.length > 2) { // Min 2 options
+        if (options.length > 2) { 
             const newOptions = options.filter((_, i) => i !== index);
             setOptions(newOptions);
         }
@@ -30,7 +29,7 @@ const CreatePollForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setPollError(''); // Clear previous errors
+        setPollError(''); 
         if (!question.trim()) {
             setPollError('Poll question cannot be empty.');
             return;
@@ -41,7 +40,7 @@ const CreatePollForm = () => {
             return;
         }
         createPoll(question.trim(), validOptions, parseInt(timeLimit, 10));
-        // Consider clearing form on successful poll creation (handled by PollContext state change)
+        
     };
 
     return (
@@ -58,7 +57,7 @@ const CreatePollForm = () => {
                         value={question}
                         onChange={(e) => setQuestion(e.target.value)}
                         placeholder="E.g., What is your favorite programming language?"
-                        maxLength={200} /* Match Figma's 0/100 or adjust */
+                        maxLength={200}
                         rows={3}
                     />
                     <span className="char-count">{question.length}/200</span>

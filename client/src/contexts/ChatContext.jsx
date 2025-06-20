@@ -1,4 +1,3 @@
-// client/src/contexts/ChatContext.js
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { useSocket } from './SocketContext';
 import { useUser } from './UserContext';
@@ -8,15 +7,15 @@ export const useChat = () => useContext(ChatContext);
 
 export const ChatProvider = ({ children }) => {
     const socket = useSocket();
-    const { user } = useUser(); // To know when user is available
+    const { user } = useUser(); 
 
     const [messages, setMessages] = useState([]);
     const [isChatOpen, setIsChatOpen] = useState(false);
     const [chatError, setChatError] = useState('');
 
-    // Request chat history once user has joined and socket is available
+    
     useEffect(() => {
-        if (socket && user?.id) { // Check for user.id to ensure join was successful
+        if (socket && user?.id) { 
             console.log('ChatContext: User joined, emitting getChatHistory');
             socket.emit('getChatHistory');
         }
@@ -54,7 +53,7 @@ export const ChatProvider = ({ children }) => {
 
         socket.on('newMessage', handleNewMessage);
         socket.on('chatHistory', handleChatHistory);
-        socket.on('error', handleChatError); // Catch generic errors, can be refined for chat scope
+        socket.on('error', handleChatError); 
 
         return () => {
             socket.off('newMessage', handleNewMessage);

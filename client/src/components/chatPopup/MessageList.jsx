@@ -1,4 +1,3 @@
-// client/src/components/Shared/ChatPopup/MessageList.js
 import React, { useEffect, useRef } from 'react';
 import { useUser } from '../../contexts/UserContext';
 import './MessageList.css';
@@ -21,7 +20,7 @@ const MessageList = ({ messages }) => {
         <div className="message-list">
             {messages.map((msg) => (
                 <div
-                    key={msg._id || msg.timestamp} // Use DB id if available, else timestamp
+                    key={msg._id || msg.timestamp} 
                     className={`message-item ${msg.senderId === user?.id ? 'my-message' : 'other-message'} ${msg.senderRole === 'teacher' ? 'teacher-message' : ''}`}
                 >
                     <div className="message-sender">

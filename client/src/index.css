@@ -88,7 +88,7 @@ textarea:focus {
   box-shadow: 0 0 0 2px rgba(var(--color-primary), 0.2);
 }
 
-/* Utility classes */
+
 .container {
   width: 90%;
   max-width: 1100px;
@@ -98,4 +98,3 @@ textarea:focus {
 .text-center {
   text-align: center;
 }
-/* Add more global styles or utility classes as needed */

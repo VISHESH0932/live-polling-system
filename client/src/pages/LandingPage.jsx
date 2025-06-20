@@ -1,17 +1,17 @@
-// client/src/pages/LandingPage.js
+
 import React, { useState } from 'react';
 import { useUser } from '../contexts/UserContext';
-import './LandingPage.css'; // Create this CSS file
+import './LandingPage.css';
 
 const LandingPage = () => {
-    const [selectedRole, setSelectedRole] = useState(''); // 'student' or 'teacher'
+    const [selectedRole, setSelectedRole] = useState('');
     const [name, setName] = useState('');
-    const [step, setStep] = useState(1); // 1 for role selection, 2 for name input
+    const [step, setStep] = useState(1); 
     const { login, userError, setUserError, isUserLoading } = useUser();
 
     const handleRoleSelect = (role) => {
         setSelectedRole(role);
-        setUserError(''); // Clear previous errors
+        setUserError('');
     };
 
     const handleRoleContinue = () => {
@@ -28,7 +28,7 @@ const LandingPage = () => {
             setUserError('Please enter your name.');
             return;
         }
-        if (!selectedRole) { // Should not happen if step logic is correct
+        if (!selectedRole) { 
             setUserError('Role not selected. Please go back.');
             return;
         }
@@ -96,7 +96,7 @@ const LandingPage = () => {
             </div>
         );
     }
-    return null; // Should not reach here
+    return null; 
 };
 
 export default LandingPage;

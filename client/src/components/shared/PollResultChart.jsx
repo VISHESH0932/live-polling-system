@@ -1,6 +1,6 @@
-// client/src/components/Shared/PollResultsChart.js
+
 import React from 'react';
-import './PollResultChart.css'; // Create this
+import './PollResultChart.css';
 
 const PollResultsChart = ({ options, question }) => {
     if (!options || options.length === 0) {
@@ -33,7 +33,7 @@ const PollResultsChart = ({ options, question }) => {
                     );
                 })}
             </ul>
-             {/* For a real chart library, you'd render its components here */}
+             
         </div>
     );
 };

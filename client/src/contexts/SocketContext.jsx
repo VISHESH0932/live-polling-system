@@ -1,4 +1,4 @@
-// client/src/contexts/SocketContext.js
+
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import io from 'socket.io-client';
 
@@ -10,7 +10,7 @@ export const SocketProvider = ({ children }) => {
     const [socket, setSocket] = useState(null);
 
     useEffect(() => {
-        // Ensure this URL is correct and accessible
+        
         const socketUrl = import.meta.env.VITE_REACT_APP_SOCKET_URL || 'http://localhost:3001';
         console.log('Attempting to connect to socket server at:', socketUrl);
         const newSocket = io(socketUrl);

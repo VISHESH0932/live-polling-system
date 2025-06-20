@@ -1,4 +1,3 @@
-// client/src/components/Student/StudentView.js
 import React, { useState, useEffect } from 'react';
 import { usePoll } from '../../contexts/PollContext';
 import QuestionDisplay from './QuestionDisplay';
@@ -13,7 +12,7 @@ const StudentView = () => {
         pollResults,
         submitAnswer,
         hasVotedThisPoll,
-        setHasVotedThisPoll, // Allow setting it directly on submit
+        setHasVotedThisPoll, 
         timeLeft,
         pollError,
         isPollLoading
@@ -21,7 +20,7 @@ const StudentView = () => {
     const [selectedOption, setSelectedOption] = useState(null);
 
     useEffect(() => {
-        // Reset selected option when a new poll arrives
+        
         setSelectedOption(null);
     }, [currentPoll?.id]);
 
@@ -34,16 +33,16 @@ const StudentView = () => {
     const handleSubmitAnswer = () => {
         if (selectedOption !== null && currentPoll && !hasVotedThisPoll) {
             submitAnswer(currentPoll.id, selectedOption);
-            setHasVotedThisPoll(true); // Optimistically set, server confirms via results update
+            setHasVotedThisPoll(true); 
         }
     };
 
-    // Determine view based on state
+    
     if (pollError) {
         return <div className="student-view error-message">{pollError}</div>;
     }
 
-    // View 1: Poll is active, student hasn't voted, time is left (Figma: Frame 6)
+    
     if (currentPoll && currentPoll.status === 'active' && !hasVotedThisPoll && timeLeft > 0) {
         return (
             <div className="student-view poll-active-view">
@@ -69,15 +68,13 @@ const StudentView = () => {
         );
     }
 
-    // View 2: Student has voted OR time is up OR poll is closed -> Show results (Figma: Frame 7)
     if (pollResults && pollResults.options) {
-         // Check if currentPoll exists for its question, fallback to pollResults question
         const questionText = currentPoll?.question || pollResults.question || "Poll Results";
         return (
             <div className="student-view poll-results-view">
                  <div className="poll-question-header">
                     <QuestionDisplay question={questionText} />
-                    {/* Optionally show timer at 00:00 if it was active */}
+                  
                     {timeLeft <=0 && currentPoll?.status !== 'closed' && <Timer initialSeconds={0} />}
                 </div>
                 <PollResultsChart options={pollResults.options} />
@@ -91,11 +88,10 @@ const StudentView = () => {
         );
     }
 
-    // View 3: Waiting for teacher to start a poll (Figma: Frame 5 & 9)
     return (
-        <div className="student-view waiting-view page-center"> {/* Reuse page-center from LandingPage.css */}
+        <div className="student-view waiting-view page-center"> 
             <div className="intervue-poll-chip">✨ Intervue Poll</div>
-            <div className="loading-spinner-placeholder">🔄</div> {/* Replace with actual spinner component */}
+            <div className="loading-spinner-placeholder">🔄</div>
             <h2>Wait for the teacher to ask questions..</h2>
         </div>
     );
