@@ -47,14 +47,14 @@ const LandingPage = () => {
                         onClick={() => handleRoleSelect('student')}
                     >
                         <h2>I'm a Student</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                        <p>Submit answers and view live poll results in real-time</p>
                     </div>
                     <div
                         className={`role-box ${selectedRole === 'teacher' ? 'selected' : ''}`}
                         onClick={() => handleRoleSelect('teacher')}
                     >
                         <h2>I'm a Teacher</h2>
-                        <p>Submit answers and view live poll results in real-time.</p>
+                        <p>Ask questions and view live poll results in real-time.</p>
                     </div>
                 </div>
                 {userError && <p className="error-message">{userError}</p>}
