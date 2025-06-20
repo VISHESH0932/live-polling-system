@@ -6,10 +6,58 @@
   flex-direction: column;
 }
 
+/* New Header Styles */
+.main-app-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px; /* Match Figma general padding */
+  background-color: var(--color-background-light-gray); /* Or white if preferred */
+  border-bottom: 1px solid var(--color-border);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.app-branding {
+  font-weight: bold;
+  color: var(--color-primary); /* Using primary color for branding */
+  font-size: 1.2rem;
+}
+
+.user-info-logout {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between "Welcome" and button */
+}
+
+.user-info-logout span {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.logout-button-main {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: var(--border-radius-small);
+}
+
+.logout-button-main:hover {
+  background-color: var(--color-primary-light);
+  color: var(--color-white);
+  border-color: var(--color-primary-light);
+}
+/* End New Header Styles */
+
+
 .app-content {
   flex-grow: 1;
-  padding: 20px; /* Adjust as needed */
-  /* You might want to center content based on Figma using max-width and margin: auto */
+  padding: 20px;
+  /* max-width: 1200px; */ /* Optional: if you want to constrain overall content width */
+  /* margin: 0 auto; */
 }
 
 .chat-toggle-button {
@@ -22,13 +70,13 @@
   border-radius: 50%;
   width: 60px;
   height: 60px;
-  font-size: 24px; /* Adjust for icon size */
+  font-size: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: var(--box-shadow-medium);
   cursor: pointer;
-  z-index: 1000; /* Ensure it's above other content */
+  z-index: 1000;
 }
 
 .chat-toggle-button:hover {

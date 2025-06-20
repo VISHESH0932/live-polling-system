@@ -1,5 +1,5 @@
 const chatService = require('../services/chatService');
-const userService = require('../services/userService'); // To ensure user is known
+const userService = require('../services/userService');
 
 module.exports = (io, socket) => {
     const handleSendMessage = async (messageText) => {
@@ -17,7 +17,7 @@ module.exports = (io, socket) => {
         if (savedMessage.error) {
             socket.emit('error', { message: savedMessage.error });
         } else {
-            // Broadcast the saved message (which includes senderName, senderRole from DB record)
+            
             io.emit('newMessage', savedMessage);
         }
     };

@@ -1,16 +1,20 @@
 // client/src/components/Shared/ChatPopup/ChatPopup.js
 import React, { useState } from 'react';
-import { useChat } from '../../contexts/ChatContext';
-import { usePoll } from '../../contexts/PollContext'; // For active users
-import MessageList from '../chatPopup/MessageList';
-import MessageInput from '../chatPopup/MessageInput';
+import { useChat } from '../../contexts/ChatContext'; // For messages, sendMessage, chatError
+import { usePoll } from '../../contexts/PollContext'; // For active users & kickStudent
+import { useUser } from '../../contexts/UserContext';   // To check if current user is teacher
+import MessageList from './MessageList';
+import MessageInput from './MessageInput';
+import StudentList from '../teacher/StudentList'; // We will use this!
 import './ChatPopup.css';
-import StudentList from '../teacher/StudentList';
 
 const ChatPopup = () => {
+    const { user } = useUser(); // Get the current logged-in user
     const { messages, sendMessage, chatError } = useChat();
-    const { activeUsers, kickStudent } = usePoll(); // Get activeUsers and kickStudent for teacher
+    const { activeUsers, kickStudent } = usePoll(); // Get activeUsers and kickStudent
     const [activeTab, setActiveTab] = useState('chat'); // 'chat' or 'participants'
+
+    const studentParticipants = activeUsers.filter(u => u.role === 'student');
 
     return (
         <div className="chat-popup-container">
@@ -25,7 +29,7 @@ const ChatPopup = () => {
                     className={activeTab === 'participants' ? 'active' : ''}
                     onClick={() => setActiveTab('participants')}
                 >
-                    Participants ({activeUsers.filter(u => u.role === 'student').length})
+                    Participants ({studentParticipants.length})
                 </button>
             </div>
             <div className="chat-popup-content">
@@ -37,7 +41,11 @@ const ChatPopup = () => {
                     </>
                 )}
                 {activeTab === 'participants' && (
-                    <StudentList students={activeUsers.filter(u => u.role === 'student')} onKick={kickStudent} />
+                    // Pass students and onKick (only if current user is a teacher)
+                    <StudentList
+                        students={studentParticipants}
+                        onKick={user?.role === 'teacher' ? kickStudent : undefined}
+                    />
                 )}
             </div>
         </div>

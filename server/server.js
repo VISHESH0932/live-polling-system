@@ -2,28 +2,30 @@ const express = require('express');
 const http = require('http');
 const { Server } = require("socket.io");
 const cors = require('cors');
-require('dotenv').config(); // Make sure this is at the top
+require('dotenv').config(); 
 
-const connectDB = require('./db'); // Import DB connection function
+const connectDB = require('./db');
 
-// Import handlers
+
 const registerUserHandlers = require('./handlers/userHandler');
 const registerPollHandlers = require('./handlers/pollHandler');
-const registerChatHandlers = require('./handlers/chatHandler'); // New
+const registerChatHandlers = require('./handlers/chatHandler'); 
 
-// Connect to Database
+
 connectDB();
+
+const FRONTEND_URL = process.env.CORS_ORIGIN || "http://localhost:3000";
 
 const app = express();
 app.use(cors({
-    origin: "*",
+    origin: FRONTEND_URL,
     methods: ["GET", "POST"]
 }));
 
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "*",
+        origin: FRONTEND_URL,
         methods: ["GET", "POST"]
     }
 });
@@ -33,7 +35,7 @@ io.on('connection', (socket) => {
 
     registerUserHandlers(io, socket);
     registerPollHandlers(io, socket);
-    registerChatHandlers(io, socket); // Register new chat handlers
+    registerChatHandlers(io, socket);
 });
 
 const PORT = process.env.PORT || 3001;

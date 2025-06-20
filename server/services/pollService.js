@@ -1,7 +1,7 @@
-const Poll = require('../models/poll'); // Import Mongoose model
-const userService = require('./userService'); // For getting creator name if needed
+const Poll = require('../models/poll'); 
+const userService = require('./userService'); 
 
-// In-memory store for the *current* active poll
+
 let activeInMemoryPoll = null;
 const DEFAULT_POLL_DURATION = 60;
 
@@ -10,18 +10,18 @@ const createNewPoll = (question, options, timeLimit, creatorId, studentsAtCreati
         clearTimeout(activeInMemoryPoll.timeoutId);
     }
 
-    const pollId = `poll-${Date.now()}`; // Still useful for in-memory tracking before DB save
+    const pollId = `poll-${Date.now()}`;
     const actualTimeLimit = parseInt(timeLimit, 10) || DEFAULT_POLL_DURATION;
 
     activeInMemoryPoll = {
-        // This structure is for the *live, in-memory* poll
-        id: pollId, // Temporary ID for live operations, DB will generate _id
+        
+        id: pollId,
         question,
         options: options.map(optText => ({ text: optText, votes: 0 })),
         status: 'active',
         startTime: Date.now(),
         timeLimit: actualTimeLimit,
-        voters: {}, // { socketId: optionIndexVoted }
+        voters: {}, 
         creator: creatorId,
         studentsAtCreation: studentsAtCreationSet,
         timeoutId: null
@@ -76,32 +76,31 @@ const closeActivePoll = async (reason) => {
             clearTimeout(activeInMemoryPoll.timeoutId);
             activeInMemoryPoll.timeoutId = null;
         }
-        activeInMemoryPoll.status = 'closed'; // Mark in-memory as closed
+        activeInMemoryPoll.status = 'closed'; 
 
-        // Prepare data for saving to DB
+       
         const pollToSave = new Poll({
             question: activeInMemoryPoll.question,
-            options: activeInMemoryPoll.options, // These now have the final votes
+            options: activeInMemoryPoll.options, 
             creatorId: activeInMemoryPoll.creator,
-            status: 'closed', // Explicitly set for DB record
+            status: 'closed', 
             startTime: new Date(activeInMemoryPoll.startTime),
             endedAt: new Date(),
             timeLimit: activeInMemoryPoll.timeLimit,
-            // studentsAtCreation: Array.from(activeInMemoryPoll.studentsAtCreation) // Optionally save this
+            
         });
 
         try {
             const savedPoll = await pollToSave.save();
             console.log(`Poll ${activeInMemoryPoll.id} closed, reason: ${reason}, and saved to DB with _id: ${savedPoll._id}`);
-            const result = { ...activeInMemoryPoll, dbId: savedPoll._id }; // Add DB ID to the result
-            activeInMemoryPoll = null; // Clear the in-memory active poll
+            const result = { ...activeInMemoryPoll, dbId: savedPoll._id }; 
+            activeInMemoryPoll = null; 
             return result;
         } catch (err) {
             console.error("Error saving poll to DB:", err);
-            // Still return the in-memory closed poll data so the frontend can react
-            // but maybe signal that DB save failed.
+            
             const result = { ...activeInMemoryPoll, errorSavingToDb: true };
-            activeInMemoryPoll = null; // Clear the in-memory active poll
+            activeInMemoryPoll = null; 
             return result;
         }
     }
@@ -121,20 +120,20 @@ const hasEveryoneVoted = () => {
 };
 
 const canTeacherCreateNewPoll = () => {
-    if (!activeInMemoryPoll || activeInMemoryPoll.status === 'closed') { // 'closed' in-memory implies it's cleared
+    if (!activeInMemoryPoll || activeInMemoryPoll.status === 'closed') { 
         return true;
     }
-    // If an active poll exists, check if everyone has voted
+   
     if (activeInMemoryPoll.status === 'active' && hasEveryoneVoted()) {
-        return true; // Allow closing the current one and starting a new one
+        return true;
     }
     return false;
 };
 
 const getPastPollsByTeacher = async (teacherId) => {
     try {
-        // Find polls where creatorId matches. Sort by newest first.
-        const polls = await Poll.find({ creatorId: teacherId }).sort({ startTime: -1 }).limit(20); // Limit for performance
+        
+        const polls = await Poll.find({ creatorId: teacherId }).sort({ startTime: -1 }).limit(20); 
         return polls;
     } catch (err) {
         console.error("Error fetching past polls:", err);
@@ -151,6 +150,6 @@ module.exports = {
     setPollTimeoutInstance,
     hasEveryoneVoted,
     canTeacherCreateNewPoll,
-    getPastPollsByTeacher, // New
+    getPastPollsByTeacher, 
     DEFAULT_POLL_DURATION
 };

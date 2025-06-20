@@ -1,7 +1,4 @@
-// services/userService.js
 
-// In-memory store for connected users
-// { socketId: { id: String, name: String, role: 'teacher' | 'student' } }
 const connectedUsers = {};
 
 const addUser = (socketId, name, role) => {
@@ -9,7 +6,8 @@ const addUser = (socketId, name, role) => {
         console.error('UserService: Attempted to add user with missing info:', { socketId, name, role });
         return null;
     }
-    // Basic validation for role
+    
+
     if (role !== 'teacher' && role !== 'student') {
         console.error('UserService: Invalid role provided:', role);
         return null;
@@ -38,7 +36,7 @@ const getUser = (socketId) => {
 };
 
 const getAllUsers = () => {
-    // Return a new array of user objects to prevent external modification of the internal store
+    
     return Object.values(connectedUsers).map(user => ({ ...user }));
 };
 
@@ -54,7 +52,7 @@ const getTeachers = () => {
                  .map(user => ({ ...user }));
 };
 
-// Function to check if a user with a given name already exists (optional, for basic uniqueness check)
+
 const isUserNameTaken = (name, excludeSocketId = null) => {
     return Object.values(connectedUsers).some(user =>
         user.name.toLowerCase() === name.toLowerCase() && user.id !== excludeSocketId
@@ -69,6 +67,6 @@ module.exports = {
     getAllUsers,
     getStudents,
     getTeachers,
-    isUserNameTaken, // Added for potential use
-    // _internal_connectedUsers_DO_NOT_MODIFY_DIRECTLY: connectedUsers // Generally avoid exposing this
+    isUserNameTaken, 
+    
 };

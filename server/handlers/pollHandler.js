@@ -120,22 +120,22 @@ module.exports = (io, socket) => {
                 options: result.updatedPoll.options,
             });
 
-            if (pollService.hasEveryoneVoted()) {
-                const currentPoll = pollService.getCurrentPoll();
-                if (currentPoll && currentPoll.status === 'active') {
-                    console.log(`All expected students answered poll ${currentPoll.id}. Closing from handler.`);
-                    const closedPoll = await pollService.closeActivePoll('All expected students have answered'); // await
-                     if (closedPoll) { // Check if closedPoll is not null
-                         io.emit('pollClosed', {
-                            id: closedPoll.id,
-                            question: closedPoll.question,
-                            options: closedPoll.options,
-                            reason: closedPoll.reason,
-                            errorSavingToDb: closedPoll.errorSavingToDb
-                        });
-                    }
-                }
-            }
+            // if (pollService.hasEveryoneVoted()) {
+            //     const currentPoll = pollService.getCurrentPoll();
+            //     if (currentPoll && currentPoll.status === 'active') {
+            //         console.log(`All expected students answered poll ${currentPoll.id}. Closing from handler.`);
+            //         const closedPoll = await pollService.closeActivePoll('All expected students have answered'); // await
+            //          if (closedPoll) { // Check if closedPoll is not null
+            //              io.emit('pollClosed', {
+            //                 id: closedPoll.id,
+            //                 question: closedPoll.question,
+            //                 options: closedPoll.options,
+            //                 reason: closedPoll.reason,
+            //                 errorSavingToDb: closedPoll.errorSavingToDb
+            //             });
+            //         }
+            //     }
+            // }
         }
     };
 
