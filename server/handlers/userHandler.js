@@ -11,9 +11,9 @@ module.exports = (io, socket) => {
             return socket.emit('error', { message: 'Name must be between 2 and 20 characters.' });
         }
 
-        if (userService.isUserNameTaken(name.trim())) {
-            return socket.emit('error', { message: `Name "${name.trim()}" is already in use. Please choose another.` });
-        }
+        // if (userService.isUserNameTaken(name.trim())) {
+        //     return socket.emit('error', { message: `Name "${name.trim()}" is already in use. Please choose another.` });
+        // }
 
         const user = userService.addUser(socket.id, name.trim(), role);
 

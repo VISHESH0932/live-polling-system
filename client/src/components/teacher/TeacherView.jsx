@@ -65,6 +65,7 @@ const TeacherView = () => {
                     <button onClick={togglePastPollsView} className="secondary-btn">
                         View Past Polls
                     </button>
+                    <br/><br/>
                 </div>
                 <div className="poll-header-info">
                     <h2>{currentPoll.question}</h2>
