@@ -14,19 +14,23 @@ const registerChatHandlers = require('./handlers/chatHandler');
 
 connectDB();
 
-const FRONTEND_URL = process.env.CORS_ORIGIN || "http://localhost:3000";
+const FRONTEND_URL = process.env.CORS_ORIGIN;
 
 const app = express();
 app.use(cors({
-    origin: FRONTEND_URL,
-    methods: ["GET", "POST"]
+  origin: FRONTEND_URL,
+    credentials: true,
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization",],
 }));
 
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
         origin: FRONTEND_URL,
-        methods: ["GET", "POST"]
+        credentials: true, 
+        methods: ["GET", "POST","OPTIONS"],
+        allowedHeaders: ["Content-Type", "Authorization"],
     }
 });
 
