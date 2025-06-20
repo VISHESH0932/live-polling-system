@@ -11,9 +11,11 @@ export const SocketProvider = ({ children }) => {
 
     useEffect(() => {
         
-        const socketUrl = import.meta.env.VITE_REACT_APP_SOCKET_URL || 'http://localhost:3001';
+        const socketUrl = import.meta.env.VITE_REACT_APP_SOCKET_URL;
         console.log('Attempting to connect to socket server at:', socketUrl);
-        const newSocket = io(socketUrl);
+        const newSocket = io(socketUrl,{
+            withCredentials: true,   
+        });
 
         newSocket.on('connect', () => {
             console.log('Socket connected:', newSocket.id);
